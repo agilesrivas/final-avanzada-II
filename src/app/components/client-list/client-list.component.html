@@ -1,0 +1,42 @@
+<main class="py-5">
+    <h3 class="mb-3">Remove Client</h3>
+    <form [formGroup]="removeForm" (ngSubmit)="remove()">
+        <div class="bg-light p-4">
+            <div class="form-row">
+                <div class="form-group col-lg-3">
+                    <label for="">Client Id</label>
+                    <input type="text" formControlName="client" name="clientId" class="form-control form-control-ml" value="">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!removeForm.valid">Remove</button>
+        </div>
+    </form>
+</main>
+
+<div *ngIf="messageError" class="alert alert-danger" role="alert">
+    {{messageError}}
+</div>
+
+<h3 class="mb-3">Client List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Credit Card Type</th>
+            <th scope="col">Credit Card Number</th>
+            <th scope="col">Debt</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients">
+            <th scope="row">{{client.clientId}}</th>
+            <td>{{client.firstName}} {{client.lastName}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.creditCardType}}</td>
+            <td>{{client.creditCardNumber}}</td>
+            <td>{{client.debt}}</td>
+        </tr>
+    </tbody>
+</table>
